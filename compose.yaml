@@ -1,5 +1,6 @@
 version: '3.8'
 services:
+
   database:
     image: mysql:8.0.32
     restart: always
@@ -28,6 +29,12 @@ services:
       - database
     networks:
       - spring-database-link
+
+  web-proxy:
+    image: my_nginx
+    restart: always
+    ports:
+      - '8080:80'
 
 networks:
   spring-database-link:
